@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrediKare Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(242, 229, 223, 1);
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(5, 59, 87, 1);
+        }
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .nav-links a {
+            color: rgba(5, 59, 87, 1);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .sign-up:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Main Page */
+        h1 {
+            color: #093b5c;
+            margin-top: 20px;
+        }
+        input, select, button {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: rgba(217, 217, 217, 1);
+        }
+        button {
+            background-color: rgba(151, 39, 92, 1);
+            color: white;
+            cursor: pointer;
+            border: none;
+            width: 100px;
+        }
+        button:hover {
+            background-color: rgba(151, 39, 92, 1);
+        }
+        .main-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .box {
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 250px;
+            text-align: center;
+            color: rgba(5, 59, 87, 1);
+        }
+        .left-box {
+            width: 250px;
+            height: 250px;
+            background-color: #ddd; /* Placeholder for image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        .dropdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .model-section button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+        #diseaseOutput {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #093b5c;
+        }
+    </style>
+</head>
+<body>
+        <!-- Navigation Bar -->
+        <div class="navbar">
+            <div class="logo">PrediKare</div>
+            <div class="nav-links">
+                <a href="#">Model</a>
+                <a href="#">Dashboard</a>
+                <a href="#">Sign-up</a>
+            </div>
+        </div>
+    
+
+    <h1>PrediKare Guide</h1>
+
+    <div class="main-container">
+        <!-- Photo Section -->
+        <div class="box left-box">[Image Here]</div>
+
+        <!-- Symptoms Section -->
+        <div class="box">
+            <h3>Name of the patient</h3>
+            <input type="text" id="patientName" placeholder="Enter name">
+
+            <h3>Symptoms</h3>
+            <div class="dropdown-container" id="symptomDropdowns"></div>
+            <br>
+            <br>
+
+            <button onclick="submitForm()">Submit</button>
+        </div>
+
+        <!-- Models Section -->
+        <div class="box model-section">
+            <h3>Select Model</h3>
+            <button onclick="selectModel('DecisionTree')">Decision Tree</button>
+            <button onclick="selectModel('RandomForest')">Random Forest</button>
+            <button onclick="selectModel('NaiveBayes')">Naive Bayes</button>
+            <p class="selected-model">Selected Model: <span id="selectedModel">DecisionTree</span></p>
+        </div>
+    </div>
+
+    <div id="diseaseOutput"></div>
+
+    <script>
+        const symptomsList = [
+            'back_pain','constipation','abdominal_pain','diarrhoea','mild_fever',
+            'yellow_urine','yellowing_of_eyes','acute_liver_failure','fluid_overload','swelling_of_stomach',
+            'swelled_lymph_nodes','malaise','blurred_and_distorted_vision','phlegm','throat_irritation',
+            'redness_of_eyes','sinus_pressure','runny_nose','congestion','chest_pain','weakness_in_limbs',
+            'fast_heart_rate','pain_during_bowel_movements','pain_in_anal_region','bloody_stool',
+            'irritation_in_anus','neck_pain','dizziness','cramps','bruising','obesity','swollen_legs',
+            'swollen_blood_vessels','puffy_face_and_eyes','enlarged_thyroid','brittle_nails',
+            'swollen_extremeties','excessive_hunger','extra_marital_contacts','drying_and_tingling_lips',
+            'slurred_speech','knee_pain','hip_joint_pain','muscle_weakness','stiff_neck','swelling_joints',
+            'movement_stiffness','spinning_movements','loss_of_balance','unsteadiness',
+            'weakness_of_one_body_side','loss_of_smell','bladder_discomfort','foul_smell_of_urine',
+            'continuous_feel_of_urine','passage_of_gases','internal_itching','toxic_look_(typhos)',
+            'depression','irritability','muscle_pain','altered_sensorium','red_spots_over_body','belly_pain',
+            'abnormal_menstruation','dischromic_patches','watering_from_eyes','increased_appetite','polyuria',
+            'family_history','mucoid_sputum','rusty_sputum','lack_of_concentration','visual_disturbances',
+            'receiving_blood_transfusion','receiving_unsterile_injections','coma','stomach_bleeding',
+            'distention_of_abdomen','history_of_alcohol_consumption','fluid_overload','blood_in_sputum',
+            'prominent_veins_on_calf','palpitations','painful_walking','pus_filled_pimples','blackheads',
+            'scurring','skin_peeling','silver_like_dusting','small_dents_in_nails','inflammatory_nails',
+            'blister','red_sore_around_nose','yellow_crust_ooze'
+        ];
+
+        let selectedModel = "DecisionTree";
+
+        function createDropdowns() {
+            let container = document.getElementById("symptomDropdowns");
+            for (let i = 0; i < 5; i++) {
+                let select = document.createElement("select");
+                let defaultOption = document.createElement("option");
+                defaultOption.textContent = "Select Symptom";
+                defaultOption.value = "";
+                select.appendChild(defaultOption);
+                
+                symptomsList.forEach(symptom => {
+                    let option = document.createElement("option");
+                    option.value = symptom;
+                    option.textContent = symptom.replace(/_/g, ' ');
+                    select.appendChild(option);
+                });
+                container.appendChild(select);
+            }
+        }
+
+        function selectModel(model) {
+            selectedModel = model;
+            document.getElementById("selectedModel").textContent = model;
+        }
+
+        function submitForm() {
+            let name = document.getElementById("patientName").value.trim();
+            let symptoms = Array.from(document.querySelectorAll("#symptomDropdowns select"))
+                               .map(select => select.value)
+                               .filter(value => value !== "");  // Remove empty values
+
+            if (!name) {
+                alert("Please enter the patient's name.");
+                return;
+            }
+            if (symptoms.length < 5) {
+                alert("Please select at least 5 symptoms.");
+                return;
+            }
+
+            document.getElementById("diseaseOutput").innerHTML = "<p class='loading'>Predicting...</p>";
+
+            fetch("http://127.0.0.1:5000/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: name,
+                    symptoms: symptoms,
+                    models: [selectedModel]
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                let result = data.results[selectedModel] || "No prediction found";
+                document.getElementById("diseaseOutput").innerHTML = `<p><b>Predicted Disease:</b> ${result}</p>`;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("diseaseOutput").innerHTML = "<p>Error predicting disease</p>";
+            });
+        }
+
+        window.onload = createDropdowns;
+    </script>
+
+</body>
+</html>
