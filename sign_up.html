@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrediKare - Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            background-color: rgba(242, 229, 223, 1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: transparent;
+        }
+
+        .logo {
+            font-size: 24px;
+            color: rgba(5, 59, 87, 1);
+            font-weight: bold;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: rgba(5, 59, 87, 1);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #2C5282;
+        }
+
+        .menu-container {
+            position: relative;
+        }
+
+        .menu-toolbar {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: rgba(5, 59, 87, 1);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-direction: column;
+            gap: 10px;
+            min-width: 150px;
+        }
+
+        .menu-container:hover .menu-toolbar {
+            display: flex;
+        }
+
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .toggle-switch {
+            display: flex;
+            background-color: rgba(5, 59, 87, 1);
+            padding: 5px;
+            border-radius: 30px;
+        }
+
+        .toggle-option {
+            padding: 10px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .toggle-option.active {
+            background-color: rgba(5, 59, 87, 1);
+            color: white;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #E2E8F0;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .request-btn {
+            background-color: rgba(151, 39, 92, 1);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .request-btn:hover {
+            background-color: rgba(131, 53, 99, 1);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">PrediKare</div>
+        <div class="nav-right">
+            <span class="nav-link">model</span>
+            <span class="nav-link">dashboard</span>
+            <div class="menu-container">
+                <span class="nav-link">menu</span>
+                <div class="menu-toolbar">
+                    <span class="nav-link">Home</span>
+                    <span class="nav-link">Guide</span>
+                    <span class="nav-link">Dashboard</span>
+                    <span class="nav-link">Contact Us</span>
+                </div>
+            </div>
+            <span class="nav-link">sign up</span>
+        </div>
+    </nav>
+
+    <div class="toggle-container">
+        <div class="toggle-switch">
+            <div class="toggle-option active" onclick="switchForm('chw')">CHW</div>
+            <div class="toggle-option" onclick="switchForm('org')">Organization</div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <!-- CHW Form -->
+        <form id="chwForm">
+            <h2>Sign Up To Good Health</h2>
+            <div class="form-group">
+                <input type="text" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Healthcare Worker ID">
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Workplace Address">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Contact E-Mail">
+            </div>
+            <button type="submit" class="request-btn">Request Access</button>
+        </form>
+
+        <!-- Organization Form -->
+        <form id="orgForm" class="hidden">
+            <h2>Sign Up To Good Health</h2>
+            <div class="form-group">
+                <input type="text" placeholder="Name of Your Organization">
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Organization Type">
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Organization Address">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Contact E-Mail">
+            </div>
+            <button type="submit" class="request-btn">Request Access</button>
+        </form>
+    </div>
+
+    <script>
+        function switchForm(formType) {
+            const chwForm = document.getElementById('chwForm');
+            const orgForm = document.getElementById('orgForm');
+            const toggleOptions = document.querySelectorAll('.toggle-option');
+
+            toggleOptions.forEach(option => option.classList.remove('active'));
+            
+            if(formType === 'chw') {
+                chwForm.classList.remove('hidden');
+                orgForm.classList.add('hidden');
+                toggleOptions[0].classList.add('active');
+            } else {
+                orgForm.classList.remove('hidden');
+                chwForm.classList.add('hidden');
+                toggleOptions[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
