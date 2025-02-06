@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrediKare - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            background-color: rgba(242, 229, 223, 1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: transparent;
+            background-color: rgba(227, 215, 209, 1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 20px; /* Increased font size */
+            color: rgba(5, 59, 87, 1);
+            font-weight: bold;
+            background-color: rgba(227, 215, 209, 1);
+        }
+        .logo-title{
+            font-size: 60px; /* Increased font size */
+            color: rgba(5, 59, 87, 1);
+            font-weight: bold;
+            background-color: rgba(227, 215, 209, 1);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: rgba(5, 59, 87, 1);
+            cursor: pointer;
+            transition: color 0.3s;
+            text-transform: lowercase;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background-color: rgba(227, 215, 209, 1);
+        }
+
+        .tagline {
+            color: rgba(5, 59, 87, 1);
+            font-size: 1.2rem;
+            margin: 20px 0;
+            background-color: rgba(227, 215, 209, 1);
+        }
+
+        .cta-button {
+            background-color: rgba(151, 39, 92, 1);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .content-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 60px 50px;
+            align-items: center;
+        }
+
+        .text-content {
+            width: 58%;
+        }
+
+        .image-content {
+            width: 40%;
+            height: 300px;
+            background-color: #ddd; /* Replace with actual image */
+            border-radius: 10px;
+        }
+
+        .section-title {
+            color: rgba(5, 59, 87, 1);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .section-text {
+            color: rgba(5, 59, 87, 1);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .learn-more {
+            color: rgba(151, 39, 92, 1);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content-section.equal-height {
+        min-height: 500px;
+        align-items: stretch;
+    }
+
+    .features-content {
+        width: 50%;
+        padding-left: 50px;
+        border-left: 3px solid rgba(5, 59, 87, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(151, 39, 92, 0.1);
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .feature-item h3 {
+        color: rgba(5, 59, 87, 1);
+        margin-bottom: 5px;
+        font-size: 1.1rem;
+    }
+
+    .feature-item p {
+        color: rgba(5, 59, 87, 0.8);
+        font-size: 0.9rem;
+    }
+
+    .why-choose-image {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .text-content {
+        width: 45%;
+        padding-right: 5%;
+    }
+    .contact-text {
+        width: 55%;
+        padding-right: 5%;
+    }
+
+    .contact-info {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-left: 3px solid rgba(5, 59, 87, 0.2);
+        background-color: rgba(5, 59, 87, 1);
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(151, 39, 92, 0.1);
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .contact-detail {
+        color: rgba(5, 59, 87, 1);
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .content-section.equal-height {
+        min-height: 500px;
+        align-items: flex-start;
+    }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <nav>
+            <div class="nav-left">
+                <div class="menu-container">
+                    <span class="nav-link">menu</span>
+                    <!-- Menu toolbar would go here -->
+                </div>
+                <div class="logo">PrediKare</div>
+            </div>
+            <div class="nav-right">
+                <span class="nav-link">model</span>
+                <span class="nav-link">dashboard</span>
+                <span class="nav-link">login</span>
+            </div>
+        </nav>
+
+        <div class="hero-section">
+            <h1 class="logo-title">PrediKare</h1>
+            <p class="tagline">Accessible healthcare for all, powered by AI</p>
+            <a href="signup.html" class="cta-button">Start your healthcare journey with us</a>
+        </div>
+
+        <div class="content-section">
+            <div class="text-content">
+                <h2 class="section-title">The Heart of who we are</h2>
+                <p class="section-text">
+                    Predikare is an AI-powered predictive analytics tool to identify individuals at risk of heart abnormalities, 
+                    enabling early intervention and reducing the burden on health systems.
+                </p>
+                <a href="#" class="learn-more">Learn more</a>
+            </div>
+            <div class="image-content">
+                <!-- Add actual image here -->
+            </div>
+        </div>
+    </div>
+    <div class="content-section equal-height">
+        <div class="text-content">
+            <h2 class="section-title">What we do</h2>
+            <p class="section-text">
+                The platform aims to empower rural populations with accurate health predictions, 
+                fostering proactive healthcare and better health outcomes.
+            </p>
+        </div>
+        <div class="features-content">
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h3>AI-Powered Predictions</h3>
+                <p>Advanced algorithms for accurate health forecasting</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h3>Proactive Care</h3>
+                <p>Early intervention systems for better outcomes</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h3>Rural Focus</h3>
+                <p>Tailored solutions for underserved communities</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-section equal-height">
+        <div class="text-content">
+            <h2 class="section-title">Why choose Predikare?</h2>
+            <p class="section-text">
+                Predikare leverages AI to tackle chronic illnesses in India with a preventive approach. 
+                By analyzing health markers like blood test results and lifestyle choices, we aim to 
+                educate and empower users to improve healthcare outcomes.
+            </p>
+        </div>
+        <div class="image-content why-choose-image">
+            <!-- Image placeholder -->
+        </div>
+    </div>
+    <div class="content-section equal-height">
+        <div class="contact-text">
+            <h2 class="section-title">Contact us</h2>
+            <p class="section-text">
+                Have questions or need assistance? Reach out to us!<br>
+                We're here to help and would love to hear from you.
+            </p>
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon"></div>
+                <div>
+                    <p class="contact-detail">MG Road, Bangalore</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"></div>
+                <div>
+                    <p class="contact-detail">predikarehq@gmail.com</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"></div>
+                <div>
+                    <p class="contact-detail">+91 98752 39274</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
