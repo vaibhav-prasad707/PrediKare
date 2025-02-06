@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrediKare - Sign In</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FDEEE8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 15px 30px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #002B45;
+            margin-right: 20px;
+            font-size: 18px;
+        }
+        .navbar .signup {
+            background-color: #002B45;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            color: #002B45;
+            margin-bottom: 20px;
+            font-size: 00%;
+        }
+        input {
+            display: block;
+            width: 300px;
+            margin: 10px auto;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid gray;
+            background: transparent;
+            font-size: 16px;
+        }
+        button {
+            background-color: rgba(151, 39, 92, 1);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 20px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: rgba(100, 20, 60, 1);
+        }
+        .signup-text {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .signup-text a {
+            color: rgba(151, 39, 92, 1);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .nav-links a {
+            color: rgba(5, 59, 87, 1);
+            text-decoration: none;
+            font-size: 16px;
+            text-align: right;
+            margin: 0 15px;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#">☰</a>
+        <a href="#">PrediKare</a>
+        <div class="nav-links">
+            <a href="#">Model</a>
+            <a href="#">Dashboard</a>
+            <a href="#">Sign-up</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Welcome Back!</h1>
+        <h1>Welcome Back!</h1>
+        <input type="email" placeholder="E-Mail Address">
+        <input type="password" placeholder="Password">
+        <button onclick="signIn()">Log in</button>
+        <p class="signup-text">If you don't have an account, <a href="#">Sign up</a></p>
+    </div>
+    <script>
+        function signIn() {
+            alert("Sign-in button clicked");
+        }
+    </script>
+</body>
+</html>
